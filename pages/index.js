@@ -1,5 +1,6 @@
 import { FcGoogle } from "react-icons/fc";
 import { useSession, signIn, signOut } from "next-auth/react"
+import { Nav } from "./component/Nav";
 
 export default function Home() {
   const { data: session } = useSession()
@@ -13,9 +14,11 @@ export default function Home() {
       </div>
     )
   } else {
-    return <>
-      Signed in as {session.user.email} <br/>
-      <button onClick={() => signOut()}>Sign out</button>
-    </>
+    return (
+      <div className="bg-blue-900 min-h-screen">
+        <Nav />
+        Signed in as {session.user.email}
+      </div>
+    )
   }
 }
